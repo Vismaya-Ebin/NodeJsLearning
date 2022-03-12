@@ -1,0 +1,20 @@
+{
+  "name": "NodeJsLearning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "deleteFiles.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vismaya-Ebin/NodeJsLearning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vismaya-Ebin/NodeJsLearning/issues"
+  },
+  "homepage": "https://github.com/Vismaya-Ebin/NodeJsLearning#readme"
+}
