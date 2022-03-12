@@ -2,8 +2,11 @@
   "name": "NodeJsLearning",
   "version": "1.0.0",
   "description": "",
-  "main": "deleteFiles.js",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +21,10 @@
   },
   "homepage": "https://github.com/Vismaya-Ebin/NodeJsLearning#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "mongodb": "^4.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
