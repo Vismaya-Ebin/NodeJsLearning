@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Vismaya-Ebin/NodeJsLearning/issues"
   },
-  "homepage": "https://github.com/Vismaya-Ebin/NodeJsLearning#readme"
+  "homepage": "https://github.com/Vismaya-Ebin/NodeJsLearning#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
