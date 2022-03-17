@@ -2,10 +2,14 @@
 import express from "express";
 import { response } from "express";
 import { Db, MongoClient } from "mongodb";
+ import dotenv from "dotenv";
+
+
+dotenv.config();
 
 const app = express();
 const PORT = 4000;
-const MONGO_URL = "mongodb://localhost";
+const MONGO_URL = process.env.MONGO_URL;
 /**Should make client as global */
 async function createConnection() {
   const client = new MongoClient(MONGO_URL);
@@ -132,7 +136,17 @@ app.post("/movies", async function (req, res) {
   //very important
   res.send(movie);
 });
-
+//PUT DATA TO DB
+app.put("/movies/:id", async function (req, res) {
+  const updateMovie = req.body;
+  const {id} = req.params
+  const movie = await client
+    .db("test")
+    .collection("movied")
+    .updateOne({id:id},{$set:updateMovie});
+  //very important
+  res.send(movie);
+});
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
