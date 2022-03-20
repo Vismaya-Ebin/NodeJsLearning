@@ -1,14 +1,14 @@
 //const express = require("express");
 import express from "express";
-import { response } from "express";
 import { Db, MongoClient } from "mongodb";
- import dotenv from "dotenv";
+import dotenv from "dotenv";
 
 
 dotenv.config();
 
 const app = express();
-const PORT = 4000;
+//const PORT = 4000;
+const PORT = process.env.PORT;
 const MONGO_URL = process.env.MONGO_URL;
 /**Should make client as global */
 async function createConnection() {
