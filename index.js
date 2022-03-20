@@ -2,6 +2,8 @@
 import express from "express";
 import { Db, MongoClient } from "mongodb";
 import dotenv from "dotenv";
+import cors from "cors";
+
 
 
 dotenv.config();
@@ -19,6 +21,7 @@ async function createConnection() {
 }
 const client = await createConnection();
 app.use(express.json());
+app.use(cors())
 
 // const movieData = [
 //   {
