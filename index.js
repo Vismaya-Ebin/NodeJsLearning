@@ -3,7 +3,7 @@ import express from "express";
 import { Db, MongoClient } from "mongodb";
 import dotenv from "dotenv";
 import cors from "cors";
-
+import {movieRouter} from './routes/movie.js';
 
 
 dotenv.config();
@@ -19,10 +19,13 @@ async function createConnection() {
   console.log("Mongo is connect 👍✨✨", client);
   return client;
 }
-const client = await createConnection();
+export const client = await createConnection();
 app.use(express.json());
-app.use(cors())
-
+app.use(cors());
+app.get("/", (req, res) => {
+  res.send("Hello Express 💕💕💕💕💕💕💕" + PORT);
+});
+app.use("/movies",movieRouter)
 // const movieData = [
 //   {
 //     id: "100",
@@ -93,63 +96,7 @@ app.use(cors())
 //     trailer: "https://www.youtube.com/embed/NgsQ8mVkN8w",
 //   },
 // ];
-app.get("/", (req, res) => {
-  res.send("Hello Express 💕💕💕💕💕💕💕" + PORT);
-});
 
-app.get("/movies", async function (req, res) {
-  const movied = await client
-    .db("test")
-    .collection("movied")
-    .find({})
-    .toArray();
-  res.send(movied);
-});
-app.get("/movies/:id", async function (req, res) {
-  const { id } = req.params;
-  //const id = req.params.id; // do destructure as it is a object
-  //db.movies.findOne({id:"102"})
-  const movied = await client
-    .db("test")
-    .collection("movied")
-    .findOne({ id: id });
-  // const movie = movieData.find((movie) => movie.id === id);
-  // console.log(movied);
-  movied
-    ? res.send(movied)
-    : res.status(400).send({ error: "Movie not found" });
-});
-
-//DELETE
-app.delete("/movies/:id", async function (req, res) {
-  const { id } = req.params;
-  const movied = await client
-    .db("test")
-    .collection("movied")
-    .deleteOne({ id: id });
-  res.send(movied);
-});
-//POST DATA TO DB
-app.post("/movies", async function (req, res) {
-  const newMovies = req.body;
-  const movie = await client
-    .db("test")
-    .collection("movied")
-    .insertMany(newMovies);
-  //very important
-  res.send(movie);
-});
-//PUT DATA TO DB
-app.put("/movies/:id", async function (req, res) {
-  const updateMovie = req.body;
-  const {id} = req.params
-  const movie = await client
-    .db("test")
-    .collection("movied")
-    .updateOne({id:id},{$set:updateMovie});
-  //very important
-  res.send(movie);
-});
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
