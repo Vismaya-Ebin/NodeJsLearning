@@ -38,7 +38,7 @@ router.post("/login", async function (req, res) {
     }
   }
 
-//   res.send(userFromDB);
+//  gi
 });
 
 async function generatePassword(password) {
