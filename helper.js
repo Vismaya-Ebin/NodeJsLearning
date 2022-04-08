@@ -1,6 +1,20 @@
 import {client } from './index.js';
+//for login post data to DB
+async function createUser(userDetails) {
+  return client
+    .db("test")
+    .collection("users")
+    .insertOne(userDetails);
+}
 
-
+//get user by name
+async function getUserByName(userName) {
+  console.log(`USERNAME: ${userName}`);
+  return client
+    .db("test")
+    .collection("users")
+    .findOne({ userName: userName });
+}
  async function updateMovie(id, updateMovie) {
     return client
       .db("test")
@@ -38,4 +52,4 @@ import {client } from './index.js';
       .toArray();
   }
   
-  export{getAllMovies,getMovieByID,deleteByID,addMovie,updateMovie}
+  export{getAllMovies,getMovieByID,deleteByID,addMovie,updateMovie,createUser,getUserByName}
