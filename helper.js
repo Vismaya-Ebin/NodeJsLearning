@@ -8,12 +8,12 @@ async function createUser(userDetails) {
 }
 
 //get user by name
-async function getUserByName(userName) {
-  console.log(`USERNAME: ${userName}`);
+async function getUserByName(username) {
+  console.log(`USERNAME: ${username}`);
   return client
     .db("test")
     .collection("users")
-    .findOne({ userName: userName });
+    .findOne({ username: username });
 }
  async function updateMovie(id, updateMovie) {
     return client
