@@ -26,7 +26,7 @@ router.post("/login", async function (req, res) {
   const userFromDB = await getUserByName(username);
   //   console.log(`DBdata ${userFromDB.username} `);
   if (!userFromDB) {
-    res.send({ message: "invalid credentials uname" });
+    res.status(401).send({ message: "invalid credentials uname" });
   } else {
     const storePassword = userFromDB.password;
     const isPasswordMatch = await bcrypt.compare(password, storePassword);
@@ -34,11 +34,11 @@ router.post("/login", async function (req, res) {
     if (isPasswordMatch) {
       res.send({ message: "login success" });
     } else {
-      res.send({ message: "invalid credentials password" });
+      res.status(401).send({ message: "invalid credentials password" });
     }
   }
 
-  res.send(userFromDB);
+//   res.send(userFromDB);
 });
 
 async function generatePassword(password) {
