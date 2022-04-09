@@ -8,11 +8,11 @@ import { auth } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", auth, async function (req, res) {
+router.get("/", async function (req, res) {
   const movied = await getAllMovies();
   res.send(movied);
 });
-router.get("/:id", auth, async function (req, res) {
+router.get("/:id",  async function (req, res) {
   const { id } = req.params;
   //const id = req.params.id; // do destructure as it is a object
   //db.movies.findOne({id:"102"})
@@ -25,20 +25,20 @@ router.get("/:id", auth, async function (req, res) {
 });
 
 //DELETE
-router.delete("/:id", auth, async function (req, res) {
+router.delete("/:id",  async function (req, res) {
   const { id } = req.params;
   const movied = await deleteByID(id);
   res.send(movied);
 });
 //POST DATA TO DB
-router.post("/", auth, async function (req, res) {
+router.post("/",  async function (req, res) {
   const newMovies = req.body;
   const movie = await addMovie(newMovies);
   //very important
   res.send(movie);
 });
 //PUT DATA TO DB
-router.put("/:id", auth, async function (req, res) {
+router.put("/:id",  async function (req, res) {
   const updateMovie = req.body;
   const { id } = req.params;
   const movie = await updateMovie(id, updateMovie);
