@@ -4,7 +4,7 @@ import { createUser, getUserByName } from "../helper.js";
 import bcrypt from "bcrypt";
 
 import express from "express";
-
+import jwt from "jsonwebtoken";
 const router = express.Router();
 
 //POST DATA TO DB FOR SIGNUP
@@ -32,13 +32,15 @@ router.post("/login", async function (req, res) {
     const isPasswordMatch = await bcrypt.compare(password, storePassword);
     console.log({ isPasswordMatch });
     if (isPasswordMatch) {
-      res.send({ message: "login success" });
+      //token generation
+      const token = jwt.sign({ id: userFromDB._id }, process.env.SECRET_KEY);
+      res.send({ message: "login success", token: token });
     } else {
       res.status(401).send({ message: "invalid credentials password" });
     }
   }
 
-//  gi
+  //  gi
 });
 
 async function generatePassword(password) {
