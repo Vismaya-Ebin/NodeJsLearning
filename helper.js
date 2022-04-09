@@ -36,12 +36,12 @@ async function getUserByName(username) {
       .collection("movied")
       .deleteOne({ id: id });
   }
-  
+ //Id changed to atlas _id convert to Object type
   async function getMovieByID(id) {
     return client
       .db("test")
       .collection("movied")
-      .findOne({ id: id });
+      .findOne({ _id: Object(id) });
   }
   
   async function getAllMovies() {
