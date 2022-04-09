@@ -19,7 +19,7 @@ async function getUserByName(username) {
     return client
       .db("test")
       .collection("movied")
-      .updateOne({ id: id }, { $set: updateMovie });
+      .updateOne({ _id: Object(id) }, { $set: updateMovie });
   }
   
   async function addMovie(newMovies) {
@@ -34,7 +34,7 @@ async function getUserByName(username) {
     return client
       .db("test")
       .collection("movied")
-      .deleteOne({ id: id });
+      .deleteOne({ _id: Object(id) });
   }
  //Id changed to atlas _id convert to Object type
   async function getMovieByID(id) {
