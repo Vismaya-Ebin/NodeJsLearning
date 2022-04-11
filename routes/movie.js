@@ -9,11 +9,11 @@ import express from "express";
 const router = express.Router();
 
 router.get("/", async function (req, res,next) {
-  res.header(
-    "Access-Control-Allow-Headers",
-    "x-access-token, Origin, Content-Type, Accept"
-  );
-  next();
+  // res.header(
+  //   "Access-Control-Allow-Headers",
+  //   "x-access-token, Origin, Content-Type, Accept"
+  // );
+  // next();
   const movied = await getAllMovies();
   res.send(movied);
 });
@@ -32,11 +32,11 @@ router.get("/:id",  async function (req, res) {
 //DELETE
 router.delete("/:id",  async function (req, res,next) {
   
-  res.header(
-    "Access-Control-Allow-Headers",
-    "x-access-token, Origin, Content-Type, Accept"
-  );
-  next();
+  // res.header(
+  //   "Access-Control-Allow-Headers",
+  //   "x-access-token, Origin, Content-Type, Accept"
+  // );
+  // next();
   const { id } = req.params;
   const movied = await deleteByID(id);
   res.send(movied);
