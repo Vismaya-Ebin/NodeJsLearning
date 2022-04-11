@@ -1,6 +1,6 @@
 //movie related api details
 
-import { getAllMovies, getMovieByID, deleteByID, addMovie } from "../helper.js";
+import { updateMovieDetails, getAllMovies, getMovieByID, deleteByID, addMovie} from "../helper.js";
 
 import express from "express";
 
@@ -33,6 +33,8 @@ router.delete("/:id", async function (req, res, next) {
   // );
   // next();
   const { id } = req.params;
+  console.log(`DELETE ID: ${id}`);
+  
   const movied = await deleteByID(id);
   res.send(movied);
 });
@@ -47,7 +49,7 @@ router.post("/", async function (req, res) {
 router.put("/:id", async function (req, res) {
   const updateMovie = req.body;
   const { id } = req.params;
-  const movie = await updateMovie(id, updateMovie);
+  const movie = await updateMovieDetails(id, updateMovie);
   //very important
   res.send(movie);
 });

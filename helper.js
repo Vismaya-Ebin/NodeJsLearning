@@ -1,4 +1,5 @@
 import {client } from './index.js';
+import {ObjectId} from 'mongodb';
 //for login post data to DB
 async function createUser(userDetails) {
   return client
@@ -15,11 +16,11 @@ async function getUserByName(username) {
     .collection("users")
     .findOne({ username: username });
 }
- async function updateMovie(id, updateMovie) {
+ async function updateMovieDetails(id, updateMovie) {
     return client
       .db("test")
       .collection("movied")
-      .updateOne({ _id: ObjectId(id) }, { $set: updateMovie });
+      .updateOne({ _id: ObjectId(id)}, { $set: updateMovie });
   }
   
   async function addMovie(newMovies) {
@@ -31,10 +32,11 @@ async function getUserByName(username) {
   
   
   async function deleteByID(id) {
+    console.log(`DELETE ID HELPER: ${id}`);
     return client
       .db("test")
       .collection("movied")
-      .deleteOne({ _id: ObjectId(id) });
+      .deleteOne({ _id: ObjectId(id)});
   }
  //Id changed to atlas _id convert to ObjectId type
   async function getMovieByID(id) {
@@ -52,4 +54,4 @@ async function getUserByName(username) {
       .toArray();
   }
   
-  export{getAllMovies,getMovieByID,deleteByID,addMovie,updateMovie,createUser,getUserByName}
+  export{getAllMovies,getMovieByID,deleteByID,addMovie,updateMovieDetails,createUser,getUserByName}
