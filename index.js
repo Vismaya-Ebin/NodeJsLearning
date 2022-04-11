@@ -28,7 +28,7 @@ app.use(cors());
 //set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
-  next();
+  // next();
 }) 
 app.get("/", (req, res) => {
   res.send("Hello Express 💕💕💕💕💕💕💕" + PORT);
