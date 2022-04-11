@@ -39,6 +39,17 @@ app.get("/", (req, res) => {
 });
 
 //for url with  / movies we have to use movieRouter
+
+
+  app.use((res, req, next) => {
+    res.header(
+      "Access-Control-Allow-Headers",
+      "x-access-token, Origin, Content-Type, Accept"
+    );
+    next();
+  });
+ 
+
 app.use("/movies", movieRouter);
 app.use("/users", userRouter);
 // const movieData = [

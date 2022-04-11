@@ -7,19 +7,11 @@ import express from "express";
 //import { auth } from "../middleware/auth.js";
 
 const router = express.Router();
-module.exports = (router) => {
-  router.use((res, req, next) => {
-    res.header(
-      "Access-Control-Allow-Headers",
-      "x-access-token, Origin, Content-Type, Accept"
-    );
-    next();
-  });
-  router.get("/", async function (req, res, next) {
-    const movied = await getAllMovies();
-    res.send(movied);
-  });
-};
+
+router.get("/", async function (req, res, next) {
+  const movied = await getAllMovies();
+  res.send(movied);
+});
 
 router.get("/:id", async function (req, res) {
   const { id } = req.params;
