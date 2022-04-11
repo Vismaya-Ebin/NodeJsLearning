@@ -27,7 +27,8 @@ app.use(cors());
 //TO Solve the error Access to fetch at 'https://vismu.herokuapp.com/movies/' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, 
 //set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
 }) 
 app.get("/", (req, res) => {
   res.send("Hello Express 💕💕💕💕💕💕💕" + PORT);
