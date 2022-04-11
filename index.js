@@ -3,14 +3,13 @@ import express from "express";
 import { Db, MongoClient } from "mongodb";
 import dotenv from "dotenv";
 import cors from "cors";
-import {movieRouter} from './routes/movie.js';
-import {userRouter} from './routes/users.js';
-
-
+import { movieRouter } from "./routes/movie.js";
+import { userRouter } from "./routes/users.js";
 
 dotenv.config();
 
 const app = express();
+
 //const PORT = 4000;
 const PORT = process.env.PORT;
 const MONGO_URL = process.env.MONGO_URL;
@@ -22,11 +21,14 @@ async function createConnection() {
   return client;
 }
 export const client = await createConnection();
+var corsOption = {
+  origin: true,
+};
+app.use(cors(corsOption));
 app.use(express.json());
- app.use(cors());
 
 // const corsOptions ={
-//   origin:'http://localhost:3000', 
+//   origin:'http://localhost:3000',
 //   credentials:true,            //access-control-allow-credentials:true
 //   optionSuccessStatus:200
 // }
@@ -37,8 +39,8 @@ app.get("/", (req, res) => {
 });
 
 //for url with  / movies we have to use movieRouter
-app.use("/movies",movieRouter);
-app.use("/users",userRouter);
+app.use("/movies", movieRouter);
+app.use("/users", userRouter);
 // const movieData = [
 //   {
 //     id: "100",
@@ -113,4 +115,3 @@ app.use("/users",userRouter);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
