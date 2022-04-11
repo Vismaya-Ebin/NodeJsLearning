@@ -27,7 +27,7 @@ async function getUserByName(username) {
     return client
       .db("test")
       .collection("movied")
-      .insertMany(newMovies);
+      .insertOne(newMovies);
   }
   
   
