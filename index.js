@@ -38,6 +38,8 @@ app.get("/", (req, res) => {
   res.send("Hello Express 💕💕💕💕💕💕💕" + PORT);
 });
 
+
+
 //for url with  / movies we have to use movieRouter
 
 
@@ -50,6 +52,42 @@ app.get("/", (req, res) => {
   });
  
 
+  const recipieObj = [
+    {
+    id:"11",
+    title:"Spaghetti",
+    picture:"https://media.istockphoto.com/photos/spaghetti-pasta-with-meatballs-picture-id1298256576"
+  },
+  {
+    id:"1",
+    title:"Spaghetti",
+    picture:"https://media.istockphoto.com/photos/spaghetti-pasta-with-meatballs-picture-id1298256576"
+  },
+  {
+    id:"2",
+    title:"Spaghetti",
+    picture:"https://media.istockphoto.com/photos/spaghetti-pasta-with-meatballs-picture-id1298256576"
+  },
+  {
+    id:"3",
+    title:"Spaghetti",
+    picture:"https://media.istockphoto.com/photos/spaghetti-pasta-with-meatballs-picture-id1298256576"
+  },
+  {
+    id:"4",
+    title:"Spaghetti",
+    picture:"https://media.istockphoto.com/photos/spaghetti-pasta-with-meatballs-picture-id1298256576"
+  },
+  {
+    id:"5",
+    title:"Spaghetti",
+    picture:"https://media.istockphoto.com/photos/spaghetti-pasta-with-meatballs-picture-id1298256576"
+  },
+  ];
+//to get recipie
+app.get("/recipie", async function (req, res) {
+  res.send(recipieObj);
+});
 app.use("/movies", movieRouter);
 app.use("/users", userRouter);
 // const movieData = [

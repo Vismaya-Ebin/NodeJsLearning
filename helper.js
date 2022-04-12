@@ -23,6 +23,7 @@ async function getUserByName(username) {
       .updateOne({ _id: ObjectId(id)}, { $set: updateMovie });
   }
   
+
   async function addMovie(newMovies) {
     return client
       .db("test")
