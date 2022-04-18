@@ -10,7 +10,7 @@ dotenv.config();
 
 const app = express();
 
-//const PORT = 4000;
+
 const PORT = process.env.PORT;
 const MONGO_URL = process.env.MONGO_URL;
 /**Should make client as global */
